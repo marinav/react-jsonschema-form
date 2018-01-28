@@ -46,7 +46,7 @@ function getFieldComponent(schema, uiSchema, idSchema, fields) {
 }
 
 function Label(props) {
-  const { label, required, id } = props;
+  const { label, required, help, id } = props;
   if (!label) {
     // See #312: Ensure compatibility with old versions of React.
     return <div />;
@@ -55,6 +55,7 @@ function Label(props) {
     <label className="control-label" htmlFor={id}>
       {label}
       {required && <span className="required">{REQUIRED_FIELD_SYMBOL}</span>}
+      {help}
     </label>
   );
 }
@@ -66,9 +67,25 @@ function Help(props) {
     return <div />;
   }
   if (typeof help === "string") {
-    return <p className="help-block">{help}</p>;
+    return (
+      <a
+        className="help-tooltip"
+        style={{ padding: "0 5px", color: "#484848" }}
+        data-toggle="tooltip"
+        title={help}>
+        <i className="glyphicon glyphicon-info-sign" />
+      </a>
+    );
   }
-  return <div className="help-block">{help}</div>;
+  return (
+    <a
+      className="help-tooltip"
+      style={{ padding: "0 5px", color: "#484848" }}
+      data-toggle="tooltip"
+      title={help}>
+      <i className="glyphicon glyphicon-info-sign" />
+    </a>
+  );
 }
 
 function ErrorList(props) {
@@ -111,11 +128,12 @@ function DefaultTemplate(props) {
 
   return (
     <div className={classNames}>
-      {displayLabel && <Label label={label} required={required} id={id} />}
+      {displayLabel && (
+        <Label label={label} required={required} help={help} id={id} />
+      )}
       {displayLabel && description ? description : null}
       {children}
       {errors}
-      {help}
     </div>
   );
 }
