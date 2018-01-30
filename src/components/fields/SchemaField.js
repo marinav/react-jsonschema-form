@@ -71,7 +71,7 @@ function Help(props) {
   }
   if (typeof help === "string") {
     return (
-      <div>
+      <span>
         <a
           className="help-tooltip"
           style={{ padding: "0 5px", color: "#484848" }}
@@ -79,14 +79,14 @@ function Help(props) {
           data-for={tooltipId}>
           <i className="glyphicon glyphicon-info-sign" />
         </a>
-        <ReactTooltip id={tooltipId} place="top" type="light">
+        <ReactTooltip id={tooltipId} type="light">
           {help}
         </ReactTooltip>
-      </div>
+      </span>
     );
   }
   return (
-    <div>
+    <span>
       <a
         className="help-tooltip"
         style={{ padding: "0 5px", color: "#484848" }}
@@ -94,10 +94,10 @@ function Help(props) {
         data-for={tooltipId}>
         <i className="glyphicon glyphicon-info-sign" />
       </a>
-      <ReactTooltip id={tooltipId} place="top" type="light">
+      <ReactTooltip id={tooltipId} type="light">
         {help}
       </ReactTooltip>
-    </div>
+    </span>
   );
 }
 
