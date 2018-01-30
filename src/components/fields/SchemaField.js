@@ -77,7 +77,7 @@ function Help(props) {
           style={{ padding: "0 5px", color: "#484848" }}
           data-tip
           data-for={tooltipId}>
-          <i className="glyphicon glyphicon-info-sign" />
+          <span>?</span>
         </a>
         <ReactTooltip id={tooltipId} type="light">
           {help}
@@ -92,7 +92,7 @@ function Help(props) {
         style={{ padding: "0 5px", color: "#484848" }}
         data-tip
         data-for={tooltipId}>
-        <i className="glyphicon glyphicon-info-sign" />
+        <span>?</span>
       </a>
       <ReactTooltip id={tooltipId} type="light">
         {help}
