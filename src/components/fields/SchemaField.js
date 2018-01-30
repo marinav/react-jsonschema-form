@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ReactTooltip from "react-tooltip";
+import shortid from "shortid";
 
 import {
   isMultiSelect,
@@ -46,7 +48,7 @@ function getFieldComponent(schema, uiSchema, idSchema, fields) {
 }
 
 function Label(props) {
-  const { label, required, id } = props;
+  const { label, required, help, id } = props;
   if (!label) {
     // See #312: Ensure compatibility with old versions of React.
     return <div />;
@@ -55,20 +57,48 @@ function Label(props) {
     <label className="control-label" htmlFor={id}>
       {label}
       {required && <span className="required">{REQUIRED_FIELD_SYMBOL}</span>}
+      {help}
     </label>
   );
 }
 
 function Help(props) {
   const { help } = props;
+  const tooltipId = shortid.generate();
   if (!help) {
     // See #312: Ensure compatibility with old versions of React.
     return <div />;
   }
   if (typeof help === "string") {
-    return <p className="help-block">{help}</p>;
+    return (
+      <div>
+        <a
+          className="help-tooltip"
+          style={{ padding: "0 5px", color: "#484848" }}
+          data-tip
+          data-for={tooltipId}>
+          <i className="glyphicon glyphicon-info-sign" />
+        </a>
+        <ReactTooltip id={tooltipId} place="top" type="light">
+          {help}
+        </ReactTooltip>
+      </div>
+    );
   }
-  return <div className="help-block">{help}</div>;
+  return (
+    <div>
+      <a
+        className="help-tooltip"
+        style={{ padding: "0 5px", color: "#484848" }}
+        data-tip
+        data-for={tooltipId}>
+        <i className="glyphicon glyphicon-info-sign" />
+      </a>
+      <ReactTooltip id={tooltipId} place="top" type="light">
+        {help}
+      </ReactTooltip>
+    </div>
+  );
 }
 
 function ErrorList(props) {
@@ -111,11 +141,12 @@ function DefaultTemplate(props) {
 
   return (
     <div className={classNames}>
-      {displayLabel && <Label label={label} required={required} id={id} />}
+      {displayLabel && (
+        <Label label={label} required={required} help={help} id={id} />
+      )}
       {displayLabel && description ? description : null}
       {children}
       {errors}
-      {help}
     </div>
   );
 }
