@@ -72,14 +72,10 @@ function Help(props) {
   if (typeof help === "string") {
     return (
       <span>
-        <a
-          className="help-tooltip"
-          style={{ padding: "0 5px", color: "#484848" }}
-          data-tip
-          data-for={tooltipId}>
+        <a className="help-tooltip" data-tip data-for={tooltipId}>
           <span>?</span>
         </a>
-        <ReactTooltip id={tooltipId} type="light">
+        <ReactTooltip id={tooltipId} place="top" type="light" effect="solid">
           {help}
         </ReactTooltip>
       </span>
@@ -87,14 +83,10 @@ function Help(props) {
   }
   return (
     <span>
-      <a
-        className="help-tooltip"
-        style={{ padding: "0 5px", color: "#484848" }}
-        data-tip
-        data-for={tooltipId}>
+      <a className="help-tooltip" data-tip data-for={tooltipId}>
         <span>?</span>
       </a>
-      <ReactTooltip id={tooltipId} type="light">
+      <ReactTooltip id={tooltipId} place="top" type="light" effect="solid">
         {help}
       </ReactTooltip>
     </span>
