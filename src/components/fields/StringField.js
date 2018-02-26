@@ -12,7 +12,6 @@ import {
 function StringField(props) {
   const {
     schema,
-    name,
     uiSchema,
     idSchema,
     formData,
@@ -39,7 +38,7 @@ function StringField(props) {
       options={{ ...options, enumOptions }}
       schema={schema}
       id={idSchema && idSchema.$id}
-      label={title === undefined ? name : title}
+      label={title === undefined ? null : title}
       value={formData}
       onChange={onChange}
       onBlur={onBlur}

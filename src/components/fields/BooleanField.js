@@ -11,7 +11,6 @@ import {
 function BooleanField(props) {
   const {
     schema,
-    name,
     uiSchema,
     idSchema,
     formData,
@@ -36,7 +35,7 @@ function BooleanField(props) {
       schema={schema}
       id={idSchema && idSchema.$id}
       onChange={onChange}
-      label={title === undefined ? name : title}
+      label={title === undefined ? null : title}
       value={formData}
       required={required}
       disabled={disabled}

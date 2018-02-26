@@ -321,7 +321,6 @@ class ArrayField extends Component {
       formData,
       errorSchema,
       idSchema,
-      name,
       required,
       disabled,
       readonly,
@@ -332,7 +331,7 @@ class ArrayField extends Component {
       onFocus,
       idPrefix,
     } = this.props;
-    const title = schema.title === undefined ? name : schema.title;
+    const title = schema.title === undefined ? null : schema.title;
     const { ArrayFieldTemplate, definitions, fields } = registry;
     const { TitleField, DescriptionField } = fields;
     const itemsSchema = retrieveSchema(schema.items, definitions);
