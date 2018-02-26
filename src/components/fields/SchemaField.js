@@ -177,7 +177,6 @@ function SchemaFieldRender(props) {
     formData,
     errorSchema,
     idSchema,
-    name,
     required,
     registry = getDefaultRegistry(),
   } = props;
@@ -234,8 +233,7 @@ function SchemaFieldRender(props) {
 
   const { type } = schema;
   const id = idSchema.$id;
-  const label =
-    uiSchema["ui:title"] || props.schema.title || schema.title || name;
+  const label = uiSchema["ui:title"] || props.schema.title || schema.title;
   const description =
     uiSchema["ui:description"] ||
     props.schema.description ||
