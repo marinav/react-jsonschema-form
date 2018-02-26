@@ -428,7 +428,6 @@ class ArrayField extends Component {
       schema,
       uiSchema,
       idSchema,
-      name,
       disabled,
       readonly,
       autofocus,
@@ -436,7 +435,7 @@ class ArrayField extends Component {
       onFocus,
       registry = getDefaultRegistry(),
     } = this.props;
-    const title = schema.title || name;
+    const title = schema.title;
     const items = this.props.formData;
     const { widgets, formContext } = registry;
     const { widget = "files", ...options } = getUiOptions(uiSchema);
@@ -468,7 +467,6 @@ class ArrayField extends Component {
       errorSchema,
       idPrefix,
       idSchema,
-      name,
       required,
       disabled,
       readonly,
@@ -477,7 +475,7 @@ class ArrayField extends Component {
       onBlur,
       onFocus,
     } = this.props;
-    const title = schema.title || name;
+    const title = schema.title;
     let items = this.props.formData;
     const { ArrayFieldTemplate, definitions, fields } = registry;
     const { TitleField } = fields;
