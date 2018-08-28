@@ -41,7 +41,7 @@ function IconBtn(props) {
       type="button"
       className={`btn btn-${type} ${className}`}
       {...otherProps}>
-      <i className={`glyphicon glyphicon-${icon}`} />
+      <i className={`fa fa-${icon}`} />
     </button>
   );
 }
@@ -92,7 +92,7 @@ function DefaultArrayItem(props) {
             {props.hasRemove && (
               <IconBtn
                 type="danger"
-                icon="remove"
+                icon="times"
                 className="array-item-remove"
                 tabIndex="-1"
                 style={btnStyle}
@@ -568,7 +568,9 @@ class ArrayField extends Component {
       uiSchema,
       registry = getDefaultRegistry(),
     } = this.props;
-    const { fields: { SchemaField } } = registry;
+    const {
+      fields: { SchemaField },
+    } = registry;
     const { orderable, removable } = {
       orderable: true,
       removable: true,
@@ -616,7 +618,7 @@ class ArrayField extends Component {
 function AddButton({ onClick, disabled }) {
   return (
     <div className="row">
-      <p className="col-xs-3 col-xs-offset-9 array-item-add text-right">
+      <p className="col-xs-3 offset-9 array-item-add text-right">
         <IconBtn
           type="info"
           icon="plus"
